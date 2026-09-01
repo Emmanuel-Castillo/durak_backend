@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /durak_backend/
+
+    # If request already points to the public folder, do nothing
+    RewriteRule ^public/ - [L]
+
+    # Internally rewrite all requests to the public folder
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ public/index.php [L,QSA]
+
+    # If the root of /nft was requested, internally rewrite to public/
+    RewriteRule ^$ public/ [L]
+</IfModule>
