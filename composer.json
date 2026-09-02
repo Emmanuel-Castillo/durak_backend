@@ -1,0 +1,20 @@
+{
+    "name": "emman/durak_backend",
+    "description": "Durak + Admin panel for Durak game",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "DurakBackend\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Emmanuel-Castillo",
+            "email": "emmanuel.2001alonso.ec@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.0.0"
+    }
+}
