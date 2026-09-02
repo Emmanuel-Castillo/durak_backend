@@ -16,6 +16,7 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=8.0.0",
-        "filp/whoops": "~2.1"
+        "filp/whoops": "~2.1",
+        "nikic/fast-route": "^1.3"
     }
 }
