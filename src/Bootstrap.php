@@ -5,6 +5,9 @@ namespace DurakBackend;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+// Dependency injection container
+$injector = include('Dependencies.php');
+
 error_reporting(E_ALL);
 
 $environment = 'development';
@@ -37,8 +40,11 @@ switch($routeInfo[0]) {
         header("HTTP/1.0 405 Method Not Allowed");
         break;
     case \FastRoute\Dispatcher::FOUND:
-        $handler = $routeInfo[1];
+        $className = $routeInfo[1][0];
+        $method = $routeInfo[1][1];
         $vars = $routeInfo[2];
-        call_user_func($handler, $vars);
+
+        $class = $injector->make($className);
+        $class->$method($vars);
         break;
 }
