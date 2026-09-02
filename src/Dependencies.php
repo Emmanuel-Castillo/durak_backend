@@ -4,6 +4,10 @@ $injector = new \Auryn\Injector;
 $serviceNamespace = 'DurakBackend\\Shared\\Services\\';
 $repositoryNamespace = 'DurakBackend\\Shared\\Repositories\\';
 
+// Inject db connection
+$conn = include('config/db.php');
+$injector->share($conn);
+
 function aliasService($interface, $implementation) {
     global $injector;
     global $serviceNamespace;
