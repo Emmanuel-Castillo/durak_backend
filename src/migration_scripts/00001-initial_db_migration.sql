@@ -11,7 +11,7 @@ START TRANSACTION;
     );
 
     CREATE TABLE user_account (
-        user_id INT PRIMARY KEY,
+        user_id INT PRIMARY KEY AUTO_INCREMENT,
         username VARCHAR(20) NOT NULL,
         level INT DEFAULT 0,
         experience INT DEFAULT 0,
