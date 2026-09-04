@@ -8,6 +8,20 @@ $repositoryNamespace = 'DurakBackend\\Shared\\Repositories\\';
 $conn = include('config/db.php');
 $injector->share($conn);
 
+// Inject HTTP request and response
+$injector->alias('Http\Request', 'Http\HttpRequest');
+$injector->share('Http\HttpRequest');
+$injector->define('Http\HttpRequest', [
+    ':get'=> $_GET,
+    ':post'=> $_POST,
+    ':cookies'=> $_COOKIE,
+    ':files' => $_FILES,
+    ':server' => $_SERVER,
+    ':inputStream' => file_get_contents('php://input')
+]);
+$injector->alias('Http\Response', 'Http\HttpResponse');
+$injector->share('Http\HttpResponse');
+
 function aliasService($interface, $implementation) {
     global $injector;
     global $serviceNamespace;
